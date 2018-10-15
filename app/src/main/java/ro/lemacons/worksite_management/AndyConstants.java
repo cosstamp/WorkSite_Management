@@ -1,15 +1,17 @@
 package ro.lemacons.worksite_management;
 
-public class AndyConstants {
+class AndyConstants {
 
     public class ServiceCode {
         public static final int HOME = 1;
     }
+
     // web service url constants
     public class ServiceType {
           public static final String URL = "https://demonuts.com/Demonuts/JsonTest/Tennis/json_parsing.php";
 
    }
+
     // webservice key constants
     public class Params {
 
@@ -17,7 +19,6 @@ public class AndyConstants {
         public static final String NAME = "name";
         public static final String COUNTRY = "country";
         public static final String CITY = "city";
-
-       }
+    }
 }
 

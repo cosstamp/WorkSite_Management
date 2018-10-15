@@ -17,8 +17,6 @@ public class MainActivity extends AppCompatActivity {
     private ParseContent parseContent;
     private final int jsoncode = 1;
     private ListView listView;
-    private ArrayList<PlayersModel> playersModelArrayList;
-    private CustomeAdapter customeAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,17 +26,11 @@ public class MainActivity extends AppCompatActivity {
         parseContent = new ParseContent(this);
         listView = (ListView) findViewById(R.id.lv);
 
-        try {
-            parseJson();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        parseJson();
     }
 
     @SuppressLint("StaticFieldLeak")
-    private void parseJson() throws IOException, JSONException {
+    private void parseJson() {
 
         if (!AndyUtils.isNetworkAvailable(MainActivity.this)) {
             Toast.makeText(MainActivity.this, "Internet is required!", Toast.LENGTH_LONG).show();
@@ -49,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         new AsyncTask<Void, Void, String>(){
             protected String doInBackground(Void[] params) {
-                String response="";
+                String response;
                 HashMap<String, String> map=new HashMap<>();
                 try {
                     HttpRequest req = new HttpRequest(AndyConstants.ServiceType.URL);
@@ -67,14 +59,14 @@ public class MainActivity extends AppCompatActivity {
         }.execute();
     }
 
-    public void onTaskCompleted(String response, int serviceCode) {
-        Log.d("responsejson", response.toString());
+    private void onTaskCompleted(String response, int serviceCode) {
+        Log.d("responsejson", response);
         switch (serviceCode) {
             case jsoncode:
                 if (parseContent.isSuccess(response)) {
                     AndyUtils.removeSimpleProgressDialog();  //will remove progress dialog
-                    playersModelArrayList = parseContent.getInfo(response);
-                    customeAdapter = new CustomeAdapter(this,playersModelArrayList);
+                    ArrayList<PlayersModel> playersModelArrayList = parseContent.getInfo(response);
+                    CustomeAdapter customeAdapter = new CustomeAdapter(this, playersModelArrayList);
                     listView.setAdapter(customeAdapter);
 
                 }else {

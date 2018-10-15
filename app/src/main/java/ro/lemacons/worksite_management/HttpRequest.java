@@ -40,16 +40,16 @@ import org.json.JSONObject;
  */
 public class HttpRequest {
     //Supported HttpRequest methods
-    public static enum Method{
-        POST,PUT,DELETE,GET;
+    public enum Method{
+        POST,PUT,DELETE,GET
     }
-    private URL url;
+
     private HttpURLConnection con;
     private OutputStream os;
     //After instantiation, when opening connection - IOException can occur
-    public HttpRequest(URL url)throws IOException{
-        this.url=url;
-        con = (HttpURLConnection)this.url.openConnection();
+    private HttpRequest(URL url)throws IOException{
+        URL url1 = url;
+        con = (HttpURLConnection) url1.openConnection();
     }
     //Can be instantiated with String representation of url, force caller to check for IOException which can be thrown
     public HttpRequest(String url)throws IOException{ this(new URL(url)); Log.d("parameters", url); }
@@ -93,9 +93,9 @@ public class HttpRequest {
      * @return HttpRequest this instance -> for chaining method @see line 22
      * */
     public HttpRequest withHeaders(String... headers){
-        for(int i=0,last=headers.length;i<last;i++) {
-            String[]h=headers[i].split("[:]");
-            con.setRequestProperty(h[0],h[1]);
+        for (String header : headers) {
+            String[] h = header.split("[:]");
+            con.setRequestProperty(h[0], h[1]);
         }
         return this;
     }
@@ -107,11 +107,10 @@ public class HttpRequest {
      * @return HttpRequest this instance -> for chaining method @see line 22
      * @throws IOException - should be checked by caller
      * */
-    public HttpRequest withData(String query) throws IOException{
+    private void withData(String query) throws IOException{
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
         writer.write(query);
         writer.close();
-        return this;
     }
     /**
      * Builds query on format of key1=v1&key2=v2 from given hashMap structure

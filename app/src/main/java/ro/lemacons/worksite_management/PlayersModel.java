@@ -3,7 +3,7 @@ package ro.lemacons.worksite_management;
 /**
  * Created by Parsania Hardik on 19-Apr-17.
  */
-public class PlayersModel {
+class PlayersModel {
 
     private String name, country, city;
 

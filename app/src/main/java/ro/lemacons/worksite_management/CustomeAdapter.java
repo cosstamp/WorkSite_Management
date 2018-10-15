@@ -8,14 +8,15 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * Created by Parsania Hardik on 03-Jan-17.
  */
-public class CustomeAdapter extends BaseAdapter {
+class CustomeAdapter extends BaseAdapter {
 
-    private Context context;
-    private ArrayList<PlayersModel> playersModelArrayList;
+    private final Context context;
+    private final ArrayList<PlayersModel> playersModelArrayList;
 
     public CustomeAdapter(Context context, ArrayList<PlayersModel> playersModelArrayList) {
 
@@ -56,7 +57,7 @@ public class CustomeAdapter extends BaseAdapter {
             holder = new ViewHolder();
             LayoutInflater inflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.lv_item, null, true);
+            convertView = Objects.requireNonNull(inflater).inflate(R.layout.lv_item, null, true);
 
             holder.tvname = (TextView) convertView.findViewById(R.id.name);
             holder.tvcountry = (TextView) convertView.findViewById(R.id.country);
@@ -77,7 +78,9 @@ public class CustomeAdapter extends BaseAdapter {
 
     private class ViewHolder {
 
-        protected TextView tvname, tvcountry, tvcity;
+        TextView tvname;
+        TextView tvcountry;
+        TextView tvcity;
     }
 
 }

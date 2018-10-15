@@ -10,13 +10,11 @@ import java.util.HashMap;
 class ParseContent {
 
     private final String KEY_SUCCESS = "status";
-    private final String KEY_MSG = "message";
-    private Activity activity;
 
     ArrayList<HashMap<String, String>> arraylist;
 
     ParseContent(Activity activity) {
-        this.activity = activity;
+        Activity activity1 = activity;
     }
 
    boolean isSuccess(String response) {
@@ -35,6 +33,7 @@ class ParseContent {
 
         try {
             JSONObject jsonObject = new JSONObject(response);
+            String KEY_MSG = "message";
             return jsonObject.getString(KEY_MSG);
 
         } catch (JSONException e) {
@@ -47,9 +46,9 @@ class ParseContent {
        ArrayList<PlayersModel> playersModelArrayList = new ArrayList<>();
         try {
             JSONObject jsonObject = new JSONObject(response);
+
             if (jsonObject.getString(KEY_SUCCESS).equals("true")) {
 
-                arraylist = new ArrayList<HashMap<String, String>>();
                 JSONArray dataArray = jsonObject.getJSONArray("data");
 
                 for (int i = 0; i < dataArray.length(); i++) {
@@ -58,6 +57,7 @@ class ParseContent {
                     playersModel.setName(dataobj.getString(AndyConstants.Params.NAME));
                     playersModel.setCountry(dataobj.getString(AndyConstants.Params.COUNTRY));
                     playersModel.setCity(dataobj.getString(AndyConstants.Params.CITY));
+
                     playersModelArrayList.add(playersModel);
                 }
             }
