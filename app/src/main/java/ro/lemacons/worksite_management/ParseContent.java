@@ -14,7 +14,6 @@ class ParseContent {
     ArrayList<HashMap<String, String>> arraylist;
 
     ParseContent(Activity activity) {
-        Activity activity1 = activity;
     }
 
    boolean isSuccess(String response) {
@@ -42,8 +41,8 @@ class ParseContent {
         return "No data";
     }
 
-   ArrayList<PlayersModel> getInfo(String response) {
-       ArrayList<PlayersModel> playersModelArrayList = new ArrayList<>();
+   ArrayList<SantierModel> getInfo(String response) {
+       ArrayList<SantierModel> santierModelArrayList = new ArrayList<>();
         try {
             JSONObject jsonObject = new JSONObject(response);
 
@@ -52,20 +51,21 @@ class ParseContent {
                 JSONArray dataArray = jsonObject.getJSONArray("data");
 
                 for (int i = 0; i < dataArray.length(); i++) {
-                    PlayersModel playersModel = new PlayersModel();
+                    SantierModel santierModel = new SantierModel();
                     JSONObject dataobj = dataArray.getJSONObject(i);
-                    playersModel.setName(dataobj.getString(AndyConstants.Params.NAME));
-                    playersModel.setCountry(dataobj.getString(AndyConstants.Params.COUNTRY));
-                    playersModel.setCity(dataobj.getString(AndyConstants.Params.CITY));
 
-                    playersModelArrayList.add(playersModel);
+                    santierModel.setId(dataobj.getString(AndyConstants.Params.ID));
+                    santierModel.setName(dataobj.getString(AndyConstants.Params.NAME));
+                    santierModel.setBuget(dataobj.getString(AndyConstants.Params.BUGET));
+
+                    santierModelArrayList.add(santierModel);
                 }
             }
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return playersModelArrayList;
+        return santierModelArrayList;
     }
 
 }

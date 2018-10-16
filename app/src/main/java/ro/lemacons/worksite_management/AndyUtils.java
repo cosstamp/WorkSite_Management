@@ -8,9 +8,7 @@ import android.net.NetworkInfo;
 class AndyUtils {
 
     private static ProgressDialog mProgressDialog;
-
-    private static void showSimpleProgressDialog(Context context, String title,
-                                                 String msg, boolean isCancelable) {
+    private static void showSimpleProgressDialog(Context context, String title, String msg, boolean isCancelable) {
         try {
             if (mProgressDialog == null) {
                 mProgressDialog = ProgressDialog.show(context, title, msg);
@@ -29,8 +27,9 @@ class AndyUtils {
             e.printStackTrace();
         }
     }
+
     static void showSimpleProgressDialog(Context context) {
-        showSimpleProgressDialog(context, null, "Loading...", false);
+        showSimpleProgressDialog(context, null, "Loading data...", false);
     }
 
     static void removeSimpleProgressDialog() {

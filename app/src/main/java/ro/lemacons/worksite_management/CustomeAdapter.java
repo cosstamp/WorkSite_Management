@@ -5,8 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -16,12 +19,12 @@ import java.util.Objects;
 class CustomeAdapter extends BaseAdapter {
 
     private final Context context;
-    private final ArrayList<PlayersModel> playersModelArrayList;
+    private final ArrayList<SantierModel> santierModelArrayList;
 
-    public CustomeAdapter(Context context, ArrayList<PlayersModel> playersModelArrayList) {
+    public CustomeAdapter(Context context, ArrayList<SantierModel> santierModelArrayList) {
 
         this.context = context;
-        this.playersModelArrayList = playersModelArrayList;
+        this.santierModelArrayList = santierModelArrayList;
     }
 
     @Override
@@ -36,12 +39,12 @@ class CustomeAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return playersModelArrayList.size();
+        return santierModelArrayList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return playersModelArrayList.get(position);
+        return santierModelArrayList.get(position);
     }
 
     @Override
@@ -49,7 +52,6 @@ class CustomeAdapter extends BaseAdapter {
         return 0;
     }
 
-    @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
 
@@ -60,8 +62,8 @@ class CustomeAdapter extends BaseAdapter {
             convertView = Objects.requireNonNull(inflater).inflate(R.layout.lv_item, null, true);
 
             holder.tvname = (TextView) convertView.findViewById(R.id.name);
-            holder.tvcountry = (TextView) convertView.findViewById(R.id.country);
-            holder.tvcity = (TextView) convertView.findViewById(R.id.city);
+            holder.tvbuget = (TextView) convertView.findViewById(R.id.buget);
+            holder.tvbugetbar = (ProgressBar) convertView.findViewById(R.id.BugetProgressBar);
 
             convertView.setTag(holder);
         }else {
@@ -69,18 +71,24 @@ class CustomeAdapter extends BaseAdapter {
             holder = (ViewHolder)convertView.getTag();
         }
 
-        holder.tvname.setText("Name: "+playersModelArrayList.get(position).getName());
-        holder.tvcountry.setText("Country: "+playersModelArrayList.get(position).getCountry());
-        holder.tvcity.setText("City: "+playersModelArrayList.get(position).getCity());
+        holder.tvname.setText(String.format("Name: %s", santierModelArrayList.get(position).getName()));
+
+        NumberFormat formatter = new DecimalFormat("#,###");
+        String formattedBuget = formatter.format( Double.parseDouble(santierModelArrayList.get(position).getBuget()));
+        //formattedNumber is equal to 1,000,000
+
+        holder.tvbuget.setText(String.format("Buget folosit: %s%%", formattedBuget));
+
+        holder.tvbugetbar.setProgress( Integer.parseInt(santierModelArrayList.get(position).getBuget()));
 
         return convertView;
     }
 
     private class ViewHolder {
 
+        ProgressBar tvbugetbar;
         TextView tvname;
-        TextView tvcountry;
-        TextView tvcity;
+        TextView tvbuget;
     }
 
 }

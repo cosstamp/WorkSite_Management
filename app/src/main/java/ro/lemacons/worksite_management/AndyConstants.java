@@ -7,18 +7,15 @@ class AndyConstants {
     }
 
     // web service url constants
-    public class ServiceType {
-          public static final String URL = "https://demonuts.com/Demonuts/JsonTest/Tennis/json_parsing.php";
-
+    class ServiceType {
+          static final String URL = "https://lemacons.ro/worksite/json.php";
    }
 
     // webservice key constants
     public class Params {
 
         public static final String ID = "id";
-        public static final String NAME = "name";
-        public static final String COUNTRY = "country";
-        public static final String CITY = "city";
+        static final String NAME = "name";
+        static final String BUGET = "buget";
     }
 }
-
