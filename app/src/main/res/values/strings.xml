@@ -2,12 +2,11 @@
     <string name="app_name">WorkSite Management</string>
     <string name="txtMainView_Title">Santiere active</string>
     <string name="title_activity_santiere">SantiereActivity</string>
-    <string name="tab_text_1">Materiale</string>
-    <string name="tab_text_2">Personal</string>
-    <string name="tab_text_3">Utilaje</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="santier_activ" />
     <string name="tab_text_4">Transport</string>
+    <string name="nume_material">Nume Material</string>
+    <string name="cantitate_material">500 Kg</string>
 
 </resources>

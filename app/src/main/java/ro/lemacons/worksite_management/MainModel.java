@@ -3,7 +3,7 @@ package ro.lemacons.worksite_management;
 /**
  * Created by Parsania Hardik on 19-Apr-17.
  */
-class SantierModel {
+class MainModel {
 
     private String id, name, buget;
 

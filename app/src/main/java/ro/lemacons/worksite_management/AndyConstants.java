@@ -12,10 +12,14 @@ class AndyConstants {
    }
 
     // webservice key constants
-    public class Params {
-
-        public static final String ID = "id";
+    class Params {
+        // Santier (page1)
+        static final String ID = "id";
         static final String NAME = "name";
         static final String BUGET = "buget";
+
+        // Santier Detaliu (page2.Tab1)
+
+
     }
 }

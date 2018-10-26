@@ -40,9 +40,11 @@ public class MainActivity extends AppCompatActivity {
         parseContent = new ParseContent(this);
         listView = (ListView) findViewById(R.id.lv);
 
-        MyIntent = new Intent(this, SantiereActivity.class);
-
         uniqueID = Settings.Secure.getString(MainActivity.this.getContentResolver(), Settings.Secure.ANDROID_ID);
+
+
+        MyIntent = new Intent(this, SantierActivity.class);
+
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -122,8 +124,8 @@ public class MainActivity extends AppCompatActivity {
             case jsoncode:
                 if (parseContent.isSuccess(response)) {
                     AndyUtils.removeSimpleProgressDialog();  //will remove progress dialog
-                    ArrayList<SantierModel> santierModelArrayList = parseContent.getInfo(response);
-                    CustomeAdapter customeAdapter = new CustomeAdapter(this, santierModelArrayList);
+                    ArrayList<MainModel> mainModelArrayList = parseContent.getInfo(response);
+                    CustomeAdapter customeAdapter = new CustomeAdapter(this, mainModelArrayList);
                     listView.setAdapter(customeAdapter);
 
                 }else {

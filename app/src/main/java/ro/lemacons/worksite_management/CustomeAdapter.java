@@ -18,33 +18,33 @@ import java.util.Objects;
  */
 class CustomeAdapter extends BaseAdapter {
 
-    private final Context context;
-    private final ArrayList<SantierModel> santierModelArrayList;
+    final Context context;
+    final ArrayList<MainModel> mainModelArrayList;
 
-    public CustomeAdapter(Context context, ArrayList<SantierModel> santierModelArrayList) {
+    CustomeAdapter(Context context, ArrayList<MainModel> mainModelArrayList) {
 
         this.context = context;
-        this.santierModelArrayList = santierModelArrayList;
+        this.mainModelArrayList = mainModelArrayList;
     }
 
     @Override
     public int getViewTypeCount() {
         return getCount();
     }
+
     @Override
     public int getItemViewType(int position) {
-
         return position;
     }
 
     @Override
     public int getCount() {
-        return santierModelArrayList.size();
+        return mainModelArrayList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return santierModelArrayList.get(position);
+        return mainModelArrayList.get(position);
     }
 
     @Override
@@ -71,15 +71,15 @@ class CustomeAdapter extends BaseAdapter {
             holder = (ViewHolder)convertView.getTag();
         }
 
-        holder.tvname.setText(String.format("Name: %s", santierModelArrayList.get(position).getName()));
+        holder.tvname.setText(String.format("Name: %s", mainModelArrayList.get(position).getName()));
 
         NumberFormat formatter = new DecimalFormat("#,###");
-        String formattedBuget = formatter.format( Double.parseDouble(santierModelArrayList.get(position).getBuget()));
+        String formattedBuget = formatter.format( Double.parseDouble(mainModelArrayList.get(position).getBuget()));
         //formattedNumber is equal to 1,000,000
 
         holder.tvbuget.setText(String.format("Buget folosit: %s%%", formattedBuget));
 
-        holder.tvbugetbar.setProgress( Integer.parseInt(santierModelArrayList.get(position).getBuget()));
+        holder.tvbugetbar.setProgress( Integer.parseInt(mainModelArrayList.get(position).getBuget()));
 
         return convertView;
     }
