@@ -3,15 +3,18 @@ package ro.lemacons.worksite_management;
 public class SantierMaterialeModel {
 
     private String nume_material;
-    private String cantitate;
+    private Integer cantitate;
+    private Integer cantitate_necesara;
     private String um;
 
     public SantierMaterialeModel() {
     }
 
-    public SantierMaterialeModel(String nume_material, String cantitate, String um) {
+
+    public SantierMaterialeModel(String nume_material, Integer cantitate, Integer cant_nec, String um) {
         this.nume_material = nume_material;
         this.cantitate = cantitate;
+        this.cantitate_necesara = cant_nec;
         this.um = um;
     }
 
@@ -23,11 +26,11 @@ public class SantierMaterialeModel {
         this.nume_material = nume_material;
     }
 
-    public String getCantitate() {
+    public Integer getCantitate() {
         return cantitate;
     }
 
-    public void setCantitate(String cantitate) {
+    public void setCantitate(Integer cantitate) {
         this.cantitate = cantitate;
     }
 
@@ -37,5 +40,13 @@ public class SantierMaterialeModel {
 
     public void setUm(String um) {
         this.um = um;
+    }
+
+    public Integer getCantitate_necesara() {
+        return cantitate_necesara;
+    }
+
+    public void setCantitate_necesara(Integer cantitate_necesara) {
+        this.cantitate_necesara = cantitate_necesara;
     }
 }

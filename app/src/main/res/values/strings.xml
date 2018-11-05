@@ -8,5 +8,6 @@
     <string name="tab_text_4">Transport</string>
     <string name="nume_material">Nume Material</string>
     <string name="cantitate_material">500 Kg</string>
+    <string name="title_activity_necesar_materiale">NecesarMateriale</string>
 
 </resources>

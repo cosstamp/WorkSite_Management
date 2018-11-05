@@ -1,9 +1,11 @@
 package ro.lemacons.worksite_management;
 
 import android.app.Activity;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -67,32 +69,4 @@ class ParseContent {
         }
         return mainModelArrayList;
     }
-
-    /*ArrayList<SantierModel_Detaliu> get_detaliu_santier(String response) {
-        ArrayList<SantierModel_Detaliu> SantierModel_DetaliuArrayList = new ArrayList<>();
-        try {
-            JSONObject jsonObject = new JSONObject(response);
-
-            if (jsonObject.getString(KEY_SUCCESS).equals("true")) {
-
-                JSONArray dataArray = jsonObject.getJSONArray("Detaliu_Santier");
-
-                for (int i = 0; i < dataArray.length(); i++) {
-                    SantierModel_Detaliu SantierModel_Detaliu = new SantierModel_Detaliu();
-                    JSONObject dataobj = dataArray.getJSONObject(i);
-
-                    SantierModel_Detaliu.setDetaliuID(dataobj.getString(AndyConstants.Params.DetaliuID));
-                    SantierModel_Detaliu.setNume_Material(dataobj.getString(AndyConstants.Params.Nume_Material));
-                    SantierModel_Detaliu.setUM(dataobj.getString(AndyConstants.Params.UM));
-
-                    SantierModel_DetaliuArrayList.add(SantierModel_Detaliu);
-                }
-            }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return SantierModel_DetaliuArrayList;
-    }*/
-
 }

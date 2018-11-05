@@ -3,7 +3,12 @@ package ro.lemacons.worksite_management;
 /**
  * Created by Parsania Hardik on 18-Apr-17.
  */
+
 import android.util.Log;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.ByteArrayOutputStream;
@@ -16,8 +21,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 /**
  * Since HttpClient,BasicNameValuePairs, etc...  are deprecated.
@@ -52,7 +55,7 @@ public class HttpRequest {
         con = (HttpURLConnection) url1.openConnection();
     }
     //Can be instantiated with String representation of url, force caller to check for IOException which can be thrown
-    public HttpRequest(String url)throws IOException{ this(new URL(url)); Log.d("parameters", url); }
+    public HttpRequest(String url)throws IOException{ this(new URL(url)); }
 
     /**
      * Sending connection and opening an output stream to server by pre-defined instance variable url
@@ -144,7 +147,7 @@ public class HttpRequest {
         BufferedReader br=new BufferedReader(new InputStreamReader(con.getInputStream()));
         StringBuilder response=new StringBuilder();
         for(String line;(line=br.readLine())!=null;)response.append(line+"\n");
-        Log.d("ressss",response.toString());
+
         return response.toString();
      }
     /**

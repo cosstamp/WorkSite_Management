@@ -16,12 +16,12 @@ import java.util.Objects;
 /**
  * Created by Parsania Hardik on 03-Jan-17.
  */
-class CustomeAdapter extends BaseAdapter {
+class MainAdapter extends BaseAdapter {
 
     final Context context;
     final ArrayList<MainModel> mainModelArrayList;
 
-    CustomeAdapter(Context context, ArrayList<MainModel> mainModelArrayList) {
+    MainAdapter(Context context, ArrayList<MainModel> mainModelArrayList) {
 
         this.context = context;
         this.mainModelArrayList = mainModelArrayList;
@@ -71,7 +71,7 @@ class CustomeAdapter extends BaseAdapter {
             holder = (ViewHolder)convertView.getTag();
         }
 
-        holder.tvname.setText(String.format("Name: %s", mainModelArrayList.get(position).getName()));
+        holder.tvname.setText(mainModelArrayList.get(position).getName());
 
         NumberFormat formatter = new DecimalFormat("#,###");
         String formattedBuget = formatter.format( Double.parseDouble(mainModelArrayList.get(position).getBuget()));

@@ -11,40 +11,55 @@
         android:id="@+id/lv_item"
         android:layout_width="match_parent"
         android:layout_height="104dp"
-        android:background="#a7a7a7"
+        android:background="@color/colorPrimaryDark"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
-            android:gravity="center_vertical"
+            android:gravity="left|center_vertical|center_horizontal"
             android:paddingStart="10dp"
-            android:paddingLeft="10dp"
+            android:paddingLeft="0dp"
             android:text="Name"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#fff" />
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large.Inverse"
+            tools:text="Name" />
 
-        <TextView
-            android:id="@+id/buget"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:paddingStart="10dp"
-            android:paddingLeft="10dp"
-            android:text="Buget"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#fff" />
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-        <ProgressBar
-            android:id="@+id/BugetProgressBar"
-            style="@style/ProgressBar_ok"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="12dp"  />
+            <TextView
+                android:id="@+id/buget"
+                android:layout_width="203dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="2dp"
+                android:gravity="center_vertical"
+                android:paddingStart="10dp"
+                android:text="Buget"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#fff" />
+
+            <ProgressBar
+                android:id="@+id/BugetProgressBar"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="27dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="12dp"
+                android:background="@color/colorPrimaryDark" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="5" />
+        </LinearLayout>
 
     </LinearLayout>
 

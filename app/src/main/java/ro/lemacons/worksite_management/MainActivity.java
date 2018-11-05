@@ -3,11 +3,10 @@ package ro.lemacons.worksite_management;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -110,7 +109,6 @@ public class MainActivity extends AppCompatActivity {
             }
             protected void onPostExecute(String result) {
                 //do something with response
-                Log.d("json_main",result);
                 swiperefresh.setRefreshing(false);
                 onTaskCompleted(result,jsoncode);
 
@@ -125,8 +123,8 @@ public class MainActivity extends AppCompatActivity {
                 if (parseContent.isSuccess(response)) {
                     AndyUtils.removeSimpleProgressDialog();  //will remove progress dialog
                     ArrayList<MainModel> mainModelArrayList = parseContent.getInfo(response);
-                    CustomeAdapter customeAdapter = new CustomeAdapter(this, mainModelArrayList);
-                    listView.setAdapter(customeAdapter);
+                    MainAdapter mainAdapter = new MainAdapter(this, mainModelArrayList);
+                    listView.setAdapter(mainAdapter);
 
                 }else {
                     Toast.makeText(MainActivity.this, parseContent.getErrorCode(response), Toast.LENGTH_LONG).show();
